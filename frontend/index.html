@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Text Summarizer &amp; Content Transformation Tool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>AI Text <mark>Summarizer</mark> &amp; Content Transformation Tool</h1>
+    <p class="lede">Paste an article, essay or report. Get a shorter version, bullet points, keywords, a tone rewrite and social-length copy.</p>
+  </header>
+
+  <section class="tool" aria-label="Summarizer tool">
+    <div class="bar">
+      <div class="bar-actions">
+        <button class="btn btn-primary" id="btnSample" type="button">Load sample text</button>
+        <button class="btn" id="btnUpload" type="button">Upload .txt file</button>
+        <button class="btn" id="btnClear" type="button">Clear</button>
+        <input type="file" id="file" accept=".txt,.md,text/plain" hidden>
+      </div>
+      <div class="slider">
+        <label for="ratio">Summary length</label>
+        <input type="range" id="ratio" min="10" max="70" step="5" value="30">
+        <output id="ratioOut" for="ratio">30%</output>
+      </div>
+    </div>
+
+    <div class="panes">
+      <div class="pane">
+        <div class="pane-head"><label for="src">Your text</label></div>
+        <textarea id="src" spellcheck="false" placeholder="Paste or type the text you want to summarize. Separate paragraphs with a blank line."></textarea>
+        <div class="pane-foot"><span id="counter">0 words · 0 sentences</span><span>English text works best</span></div>
+      </div>
+
+      <div class="pane">
+        <div class="tabs" role="tablist" aria-label="Output type">
+          <button class="tab" role="tab" id="tab-summary" data-tab="summary" aria-selected="true" type="button">Summary</button>
+          <button class="tab" role="tab" id="tab-bullets" data-tab="bullets" aria-selected="false" tabindex="-1" type="button">Key points</button>
+          <button class="tab" role="tab" id="tab-keywords" data-tab="keywords" aria-selected="false" tabindex="-1" type="button">Keywords</button>
+          <button class="tab" role="tab" id="tab-rewrite" data-tab="rewrite" aria-selected="false" tabindex="-1" type="button">Rewrite tone</button>
+          <button class="tab" role="tab" id="tab-short" data-tab="short" aria-selected="false" tabindex="-1" type="button">Short form</button>
+          <button class="tab" role="tab" id="tab-highlights" data-tab="highlights" aria-selected="false" tabindex="-1" type="button">Highlights</button>
+        </div>
+        <div class="opts" id="rewriteOpts" hidden>
+          <div class="seg" role="radiogroup" aria-label="Tone">
+            <input type="radio" name="tone" id="tone-formal" value="formal" checked><label for="tone-formal">Formal</label>
+            <input type="radio" name="tone" id="tone-casual" value="casual"><label for="tone-casual">Casual</label>
+            <input type="radio" name="tone" id="tone-simple" value="simple"><label for="tone-simple">Simple</label>
+          </div>
+          <label class="chk" for="sumOnly"><input type="checkbox" id="sumOnly"> Rewrite the summary only</label>
+        </div>
+        <div id="out" role="tabpanel" aria-live="polite" aria-labelledby="tab-summary"></div>
+        <div class="pane-foot"><span id="outMeta"></span><button class="btn" id="btnCopy" type="button">Copy</button></div>
+      </div>
+    </div>
+
+    <dl class="stats" aria-label="Text statistics">
+      <div><dt>Words in</dt><dd id="s-in">–</dd></div>
+      <div><dt>Words out</dt><dd id="s-out">–</dd></div>
+      <div><dt>Sentences kept</dt><dd id="s-sent">–</dd></div>
+      <div><dt>Shorter by</dt><dd id="s-cut">–</dd></div>
+      <div><dt>Reading time</dt><dd id="s-time">–</dd></div>
+      <div><dt>Readability</dt><dd id="s-read">–</dd></div>
+    </dl>
+  </section>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

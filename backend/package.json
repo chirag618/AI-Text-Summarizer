@@ -1,0 +1,17 @@
+{
+  "name": "ai-text-summarizer",
+  "version": "1.0.0",
+  "description": "AI Text Summarizer & Content Transformation Tool (Node.js + Express backend, HTML/CSS/JS frontend)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.22.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
