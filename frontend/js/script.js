@@ -30,6 +30,9 @@ function renderEmpty(){
   clearStats();
 }
 function renderError(msg){
+  state.data = null;
+  state.reqId++;
+
   out.replaceChildren(el('p','empty', msg));
   $('outMeta').textContent = '';
   state.copy = '';
